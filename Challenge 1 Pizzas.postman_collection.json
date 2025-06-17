@@ -1,259 +1,237 @@
 {
-	"info": {
-		"_postman_id": "14f83387-f8fc-424c-bcc7-9f5307fdd058",
-		"name": "Challenge 1 Pizzas",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "43188140",
-		"_collection_link": "https://www.postman.com/research-cosmologist-85500387/workspace/pizzaapi/collection/43188140-14f83387-f8fc-424c-bcc7-9f5307fdd058?action=share&source=collection_link&creator=43188140"
-	},
-	"item": [
-		{
-			"name": "Get All Restaurants",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"pm.test(\"Response is an array\", function () {\r",
-							"    pm.expect(pm.response.json()).to.be.an(\"array\");\r",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:5001/restaurants",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "5001",
-					"path": [
-						"restaurants"
-					]
-				},
-				"description": "Purpose is to Fetch all restaurants"
-			},
-			"response": []
-		},
-		{
-			"name": "Get Restaurant by ID",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200 or 404\", function () {\r",
-							"    pm.response.to.have.status(200).or.status(404);\r",
-							"});\r",
-							"pm.test(\"Response has pizzas if 200\", function () {\r",
-							"    if (pm.response.code === 200) {\r",
-							"        pm.expect(pm.response.json()).to.have.property(\"pizzas\");\r",
-							"    }\r",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:5001/restaurants/2",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "5001",
-					"path": [
-						"restaurants",
-						"2"
-					]
-				},
-				"description": "The purpose is to Fetch a specific restaurant by ID, including its pizzas"
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Restaurant",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:5001/restaurants/65",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "5001",
-					"path": [
-						"restaurants",
-						"65"
-					]
-				},
-				"description": "The purpose is to Delete a restaurant by ID."
-			},
-			"response": []
-		},
-		{
-			"name": "Get All Pizzas",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"pm.test(\"Response is an array\", function () {\r",
-							"    pm.expect(pm.response.json()).to.be.an(\"array\");\r",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:5001/pizzas",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "5001",
-					"path": [
-						"pizzas"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create RestaurantPizza",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"description": "The purpose is to Fetch all pizzas."
-			},
-			"response": []
-		},
-		{
-			"name": "Create RestaurantPizza",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 201, 400, or 404\", function () {\r",
-							"    pm.response.to.have.status(201).or.status(400).or.status(404);\r",
-							"});\r",
-							"pm.test(\"Response has pizza and restaurant if 201\", function () {\r",
-							"    if (pm.response.code === 201) {\r",
-							"        pm.expect(pm.response.json()).to.have.property(\"pizza\");\r",
-							"        pm.expect(pm.response.json()).to.have.property(\"restaurant\");\r",
-							"    }\r",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"price\": 5,\r\n  \"pizza_id\": 1,\r\n  \"restaurant_id\": 1\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://127.0.0.1:5001/restaurant_pizzas",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "5001",
-					"path": [
-						"restaurant_pizzas"
-					]
-				},
-				"description": "The purpose is to Create a new RestaurantPizza association."
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "_postman_id": "14f83387-f8fc-424c-bcc7-9f5307fdd058",
+    "name": "Challenge 1 Pizzas",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "43188140",
+    "_collection_link": "https://www.postman.com/research-cosmologist-85500387/workspace/pizzaapi/collection/43188140-14f83387-f8fc-424c-bcc7-9f5307fdd058?action=share&source=collection_link&creator=43188140"
+  },
+  "item": [
+    {
+      "name": "Get All Restaurants",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [""],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test(\"Response is an array\", function () {\r",
+              "    pm.expect(pm.response.json()).to.be.an(\"array\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:5006/restaurants",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "5006",
+          "path": ["restaurants"]
+        },
+        "description": "Purpose is to Fetch all restaurants"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Restaurant by ID",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [""],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200 or 404\", function () {\r",
+              "    pm.expect([200, 404]).to.include(pm.response.code);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response has pizzas if 200\", function () {\r",
+              "    if (pm.response.code === 200) {\r",
+              "        pm.expect(pm.response.json()).to.have.property(\"pizzas\");\r",
+              "    }\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:5006/restaurants/2",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "5006",
+          "path": ["restaurants", "2"]
+        },
+        "description": "The purpose is to Fetch a specific restaurant by ID, including its pizzas"
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Restaurant",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 204 or 404\", function () {\r",
+              "pm.expect(pm.response.code).to.be.oneOf([204, 404]);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:5006/restaurants/65",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "5006",
+          "path": ["restaurants", "65"]
+        },
+        "description": "The purpose is to Delete a restaurant by ID."
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Pizzas",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [""],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test(\"Response is an array\", function () {\r",
+              "    pm.expect(pm.response.json()).to.be.an(\"array\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:5006/pizzas",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "5006",
+          "path": ["pizzas"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create RestaurantPizza",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 201, 400, or 404\", function () {\r",
+              "pm.expect(pm.response.code).to.be.oneOf([201, 400, 404]);\r",
+              "});\r",
+              "pm.test(\"Response has pizza and restaurant if 201\", function () {\r",
+              "if (pm.response.code === 201) {\r",
+              "pm.expect(pm.response.json()).to.have.property(\"pizza\");\r",
+              "pm.expect(pm.response.json()).to.have.property(\"restaurant\");\r",
+              "}\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [""],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"price\": 5,\r\n  \"pizza_id\": 1,\r\n  \"restaurant_id\": 1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5006/restaurant_pizzas",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "5006",
+          "path": ["restaurant_pizzas"]
+        },
+        "description": "The purpose is to Create a new RestaurantPizza association."
+      },
+      "response": []
+    }
+  ]
 }

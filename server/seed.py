@@ -15,13 +15,13 @@ with app.app_context():
         db.create_all()
 
         # Add restaurants
-        restaurant1 = Restaurant(name="Dominion Pizza", address="123 Main St")
-        restaurant2 = Restaurant(name="Pizza Hut", address="456 Oak Ave")
+        restaurant1 = Restaurant(name="Oscar Pizza", address="Waiyaki Way")
+        restaurant2 = Restaurant(name="Stella Pizza", address="Loreto Rd")
         db.session.add_all([restaurant1, restaurant2])
 
         # Add pizzas
-        pizza1 = Pizza(name="Cheese", ingredients="Dough, Tomato Sauce, Cheese")
-        pizza2 = Pizza(name="Pepperoni", ingredients="Dough, Tomato Sauce, Cheese, Pepperoni")
+        pizza1 = Pizza(name="Chicken", ingredients="Flour, Sauce, Chicken")
+        pizza2 = Pizza(name="Pineapple", ingredients="Flour, Sauce, Pineapple")
         db.session.add_all([pizza1, pizza2])
 
         # Add restaurant_pizzas

@@ -9,7 +9,7 @@ SETUP
 3. Set up environment: export FLASK_APP=server.app:app
 4. Run migrations: flask db upgrade
 5. Seed database: python server/seed.py
-6. Start server: python server/app.py --port 5001
+6. Start server: python server/app.py --port 5006
 
 ---
 
@@ -29,7 +29,7 @@ TESTING WITH POSTMAN
 1. Install Postman
 2. Import Challenge 1 Pizzas.postman_collection.json
    - In Postman, click Import > File > Select Challenge 1 Pizzas.postman_collection.json.
-3. Update URLs to http://127.0.0.1:5001 if needed.
+3. Update URLs to http://127.0.0.1:5006 if needed.
 4. Run requests in the collection to test all endpoints.
 5. Check test results in the Tests tab of each request.
 

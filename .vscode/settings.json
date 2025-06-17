@@ -1,0 +1,4 @@
+{
+  "python.analysis.extraPaths": ["/root/Projects/Phase4Projects/Phase4PizzaCodeChallenge"],
+  "python.pythonPath": "/root/.local/share/virtualenvs/Phase4PizzaCodeChallenge-*/bin/python"
+}

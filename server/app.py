@@ -14,9 +14,8 @@ from server import db
 db.init_app(app)
 migrate = Migrate(app, db)
 
-# Register routes
 from server.routes import register_routes
 register_routes(app)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5001)
